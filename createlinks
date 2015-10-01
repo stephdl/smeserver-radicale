@@ -24,7 +24,6 @@ for  my $event (qw(
 #upgrade only with radicale-update
     event_link("radicale-pip-upgrade", 'radicale-update', "10");
 
-safe_symlink("daemontools", "root/etc/rc.d/init.d/radicale");
 service_link_enhanced("radicale", "S95", "7");
 service_link_enhanced("radicale", "K25", "6");
 service_link_enhanced("radicale", "K25", "0");
