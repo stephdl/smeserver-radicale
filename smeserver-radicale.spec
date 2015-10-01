@@ -48,14 +48,15 @@ rm -rf %{name}-%{version}
 
 %pre
 
+/sbin/e-smith/create-system-user radicale 911 "Radicale server" /home/e-smith/files/.radicale/ /bin/false
+
 echo "### Radicale Installation"
-pip install --upgrade radicale 2>&1 1>/dev/null
+pip install --upgrade radicale
 
 %preun
 
 %post
-chkconfig --add radicaled  2>&1 1>/dev/null
-/sbin/e-smith/create-system-user radicale 911 "Radicale server" /home/e-smith/files/.radicale/ /bin/false
+chkconfig --add radicale  >/dev/null 2>&1
 
 %postun
 
