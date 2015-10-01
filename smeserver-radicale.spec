@@ -32,6 +32,7 @@ smserver rpm to setup the roundcube IMAP mail client.
 %build
 perl createlinks
 %{__mkdir_p} root/home/e-smith/files/.radicale/collections
+%{__mkdir_p} root/etc/radicale/
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,7 +57,7 @@ pip install --upgrade radicale
 %preun
 
 %post
-chkconfig --add radicale  >/dev/null 2>&1
+#chkconfig --add radicale  >/dev/null 2>&1
 
 %postun
 
