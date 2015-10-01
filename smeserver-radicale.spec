@@ -1,4 +1,4 @@
-%define name smeserver-roundcube
+%define name smeserver-radicale
 %define version 0.0.1
 %define release 1
 
