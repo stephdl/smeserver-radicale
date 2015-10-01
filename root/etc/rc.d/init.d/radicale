@@ -13,7 +13,7 @@ RUNAS='radicale'
 NAME='radicale'
 
 PIDFILE=/var/run/$NAME.pid
-LOGFILE=/var/log/$NAME.log
+LOGFILE=/dev/null
 
 start() {
  if [ -f $PIDFILE ] && kill -0 $(cat $PIDFILE); then

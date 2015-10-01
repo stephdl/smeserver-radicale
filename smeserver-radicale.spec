@@ -33,6 +33,7 @@ smserver rpm to setup the roundcube IMAP mail client.
 perl createlinks
 %{__mkdir_p} root/home/e-smith/files/.radicale/collections
 %{__mkdir_p} root/etc/radicale/
+/var/log/radicale
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -40,6 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 rm -f %{name}-%{version}-filelist
 /sbin/e-smith/genfilelist \
    --dir /home/e-smith/files/.radicale/collections 'attr(0755,radicale,radicale)' \
+   --dir /var/log/radicale/ 'attr(0755,radicale,radicale)' \
+   --file /var/log/radicale/radicale.log 'attr(0755,radicale,radicale)' \
 $RPM_BUILD_ROOT > %{name}-%{version}-filelist
 echo "%doc COPYING"  >> %{name}-%{version}-filelist
 
