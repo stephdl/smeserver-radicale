@@ -52,7 +52,7 @@ rm -rf %{name}-%{version}
 /sbin/e-smith/create-system-user radicale 911 "Radicale server" /home/e-smith/files/.radicale/ /bin/false
 
 echo "### Radicale Installation"
-pip install --upgrade radicale
+pip install --upgrade pip radicale
 
 %preun
 
