@@ -1,0 +1,7 @@
+# Daemon flag
+#daemon = False
+daemon = True
+
+# File storing the PID in daemon mode
+#pid =
+pid = /var/run/radicale/radicale.pid

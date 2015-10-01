@@ -1,0 +1,8 @@
+# SSL private key
+#key = /etc/apache2/ssl/server.key
+
+{
+  my $rad_name = $SystemName || "server";
+  my $rad_domain = $DomainName;
+  $OUT .= "key = /home/e-smith/ssl.key/$rad_name.$rad_domain.key\n";
+}

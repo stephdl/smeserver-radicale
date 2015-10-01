@@ -1,0 +1,24 @@
+# -*- mode: conf -*-
+# vim:ft=cfg
+
+# Config file for Radicale - A simple calendar server
+#
+# Place it into /etc/radicale/config (global)
+# or ~/.config/radicale/config (user)
+#
+# The current values are the default ones
+
+
+[server]
+
+# CalDAV server hostnames separated by a comma
+# IPv4 syntax: address:port
+# IPv6 syntax: [address]:port
+# For example: 0.0.0.0:9999, [::]:9999
+# IPv6 adresses are configured to only allow IPv6 connections
+#hosts = 0.0.0.0:5232
+{
+  my $rad_ports = $radicale{TCPPort} || 5232;
+  my $rad_ip = $LocalIP || 127.0.0.1;
+  $OUT .= "hosts = $rad_ip:$rad_ports\n";
+}

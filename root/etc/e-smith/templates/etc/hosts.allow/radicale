@@ -1,0 +1,4 @@
+{
+      $DB->hosts_allow_spec('radicale','radicale');
+}
+
