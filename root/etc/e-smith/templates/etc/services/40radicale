@@ -1,0 +1,7 @@
+{
+my $port = $radicale{TCPPort} || '5232';
+$OUT .= << 'EOF';
+#Radicale
+radicale           $port/tcp
+EOF
+}

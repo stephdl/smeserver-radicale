@@ -1,0 +1,30 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+#expand specific roundcube template
+for my $event (qw(
+    bootstrap-console-save
+    radicale-update
+    console-save
+    ))
+{
+    templates2events("/etc/radicale/logging", $event);
+    templates2events("/etc/radicale/config", $event);
+}
+
+#restart specific services to avoid to reboot after the installation
+for  my $event (qw(
+    radicale-update
+    console-save
+    ))
+{
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/radicale");
+}
+#upgrade only with radicale-update
+    event_link("radicale-pip-upgrade", 'radicale-update', "10");
+
+safe_symlink("daemontools", "root/etc/rc.d/init.d/radicale");
+service_link_enhanced("radicale", "S95", "7");
+service_link_enhanced("radicale", "K25", "6");
+service_link_enhanced("radicale", "K25", "0");
