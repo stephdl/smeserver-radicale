@@ -1,6 +1,6 @@
 %define name smeserver-radicale
 %define version 0.0.1
-%define release 1
+%define release 2
 
 Summary: smserver rpm to setup radicale, a carddav and caldav client
 Name: %{name}
