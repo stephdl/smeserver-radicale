@@ -21,10 +21,10 @@ dns_lookup = True
 [encoding]
 
 # Encoding for responding requests
-#request = utf-8
+request = utf-8
 
 # Encoding for storing local collections
-#stock = utf-8
+stock = utf-8
 
 
 [well-known]
@@ -83,7 +83,7 @@ type = IMAP
 #imap_port = 143
 #imap_ssl = False
 imap_hostname = localhost
-imap_port = 993
+imap_port = {$imaps{'TCPPort'} || '993'}
 imap_ssl = True
 
 # PAM group user should be member of
@@ -153,7 +153,7 @@ filesystem_folder = /home/e-smith/files/.radicale/collections
 #config = /etc/radicale/logging
 config = /etc/radicale/logging
 # Set the default logging level to debug
-#debug = False
+debug = {$radicale{'debug'} || 'False'}
 # Store all environment variables (including those set in the shell)
 #full_environment = False
 

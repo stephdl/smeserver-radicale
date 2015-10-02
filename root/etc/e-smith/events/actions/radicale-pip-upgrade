@@ -1,2 +1,19 @@
-#!/bin/bash
-pip install --upgrade pip radicale
+#!/usr/bin/perl
+use strict;
+use warnings;
+use esmith::ConfigDB;
+
+my $db = esmith::ConfigDB->open_ro;
+
+if (( ! -f '/home/e-smith/files/.radicale/radicale.cert' ) && ( ! -f '/home/e-smith/files/.radicale/radicale.key'))
+    {
+     my $rad_name = $db->get_value('SystemName') || "server";
+     my $rad_domain = $db->get_value('DomainName') || 'myexample.com';
+         
+    system ("openssl req  -new -sha256 -newkey rsa:4096 -days 3650 -nodes -x509 -subj /O=Radicale/CN=$rad_name.$rad_domain -keyout /home/e-smith/files/.radicale/radicale.key -out /home/e-smith/files/.radicale/radicale.crt") == 0 
+    || die "impossible to create the ssl certificate";
+    system ('chown radicale:radicale /home/e-smith/files/.radicale/radicale.*'); 
+    system ('chmod 400 /home/e-smith/files/.radicale/radicale.*');
+    }
+                                
+system ('pip install --upgrade pip radicale');
