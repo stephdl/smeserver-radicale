@@ -31,18 +31,21 @@ smserver rpm to setup the roundcube IMAP mail client.
 
 %build
 perl createlinks
-%{__mkdir_p} root/home/e-smith/files/.radicale/collections
-%{__mkdir_p} root/etc/radicale/
-%{__mkdir_p} root/var/log/radicale
+#%{__mkdir_p} root/home/e-smith/files/.radicale/collections
+#%{__mkdir_p} root/etc/radicale/
+#%{__mkdir_p} root/var/log/radicale
+#%{__mkdir_p} root/var/run/radicale
 
 %install
 rm -rf $RPM_BUILD_ROOT
 (cd root   ; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
 rm -f %{name}-%{version}-filelist
 /sbin/e-smith/genfilelist \
+   --dir /etc/radicale/ 'attr(0755,root,root)' \
    --dir /home/e-smith/files/.radicale/collections 'attr(0755,radicale,radicale)' \
    --dir /var/log/radicale/ 'attr(0755,radicale,radicale)' \
    --file /var/log/radicale/radicale.log 'attr(0755,radicale,radicale)' \
+   --dir /var/run/radicale 'attr(0755,radicale,radicale)' \
 $RPM_BUILD_ROOT > %{name}-%{version}-filelist
 echo "%doc COPYING"  >> %{name}-%{version}-filelist
 
@@ -52,10 +55,10 @@ rm -rf %{name}-%{version}
 
 %pre
 
-/sbin/e-smith/create-system-user radicale 911 "Radicale server" /home/e-smith/files/.radicale/ /bin/false
+/sbin/e-smith/create-system-user radicale 1956 "Radicale server" /home/e-smith/files/.radicale/ /sbin/nologin
 
 echo "### Radicale Installation"
-pip install --upgrade pip radicale
+pip install --upgrade pip radicale 
 
 %preun
 
