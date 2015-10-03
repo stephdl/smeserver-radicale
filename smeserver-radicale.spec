@@ -55,7 +55,7 @@ rm -rf %{name}-%{version}
 
 %pre
 
-/sbin/e-smith/create-system-user radicale 1956 "Radicale server" /home/e-smith/files/.radicale/ /sbin/nologin
+/sbin/e-smith/create-system-user radicale 956 "Radicale server" /home/e-smith/files/.radicale/ /bin/bash
 
 echo "### Radicale Installation"
 pip install --upgrade pip radicale >/dev/null 2>&1 
