@@ -1,2 +1,18 @@
-#!/bin/bash
-pip install --upgrade pip radicale
+#!/usr/bin/perl
+use strict
+use warnings
+
+if (( ! -f /home/e-smith/files/.radicale/radicale.cert ) || ( ! -f /home/e-smith/files/.radicale/radicale.key))
+    {
+  my $rad_name = $SystemName || "server";
+  my $rad_domain = $DomainName || 'my.example.com';
+
+    system (openssl req, -new, -newkey rsa:4096, 
+    -days 3650, -nodes, -x509, 
+    -subj "/O=Radicale/CN=$rad_name.$rad_domain", 
+    -keyout /home/e-smith/files/.radicale/radicale.key, 
+    -out /home/e-smith/files/.radicale/radicale.crt) == 0 
+                  || die "impossible to create the ssl certificate";
+    }
+
+system (pip install --upgrade pip radicale);

@@ -5,9 +5,4 @@ ssl = True
 # SSL certificate path
 #certificate = /etc/apache2/ssl/server.crt
 
-{
-  my $rad_name = $SystemName || "server";
-  my $rad_domain = $DomainName;
-  $OUT .= "certificate = /home/e-smith/ssl.crt/$rad_name.$rad_domain.crt\n";
-}
-
+certificate = /home/e-smith/files/.radicale/radicale.crt
