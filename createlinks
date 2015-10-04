@@ -20,11 +20,12 @@ for  my $event (qw(
     ))
 {
     safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/radicale");
+    event_link("radicale-pip-upgrade", $event, "10");
+
 }
 
 #only with radicale-update
 
-    event_link("radicale-pip-upgrade", 'radicale-update', "10");
     templates2events("/etc/hosts.allow", 'radicale-update');
     safe_symlink("adjust", "root/etc/e-smith/events/radicale-update/services2adjust/masq");
 
