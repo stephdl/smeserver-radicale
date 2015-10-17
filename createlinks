@@ -27,6 +27,8 @@ for  my $event (qw(
 #only with radicale-update
 
     templates2events("/etc/hosts.allow", 'radicale-update');
+    templates2events("/etc/rc.d/init.d/masq", 'radicale-update');
+    templates2events("/etc/services", 'radicale-update');
     safe_symlink("adjust", "root/etc/e-smith/events/radicale-update/services2adjust/masq");
 
 

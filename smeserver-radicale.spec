@@ -1,6 +1,6 @@
 %define name smeserver-radicale
 %define version 0.0.3
-%define release 1
+%define release 2
 
 Summary: smserver rpm to setup radicale, a carddav and caldav client
 Name: %{name}
@@ -22,6 +22,9 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sat Oct 17 2015 stephane de labrusse <stephdl@de-labrusse.fr> 0.0.3-2
+- /etc/rc.d/init.d/masq & /etc/services are expanding on radicale-update
+
 * Sun Oct 4 2015 stephane de labrusse <stephdl@de-labrusse.fr> 0.0.3-1
 - specific ssl certificate is used
 - the user/group radicale run the init script
