@@ -135,7 +135,7 @@ type = owner_write
 
 # Folder for storing local collections, created if not present
 #filesystem_folder = ~/.config/radicale/collections
-filesystem_folder = /home/e-smith/files/.radicale/collections
+filesystem_folder = /home/e-smith/files/radicale/collections
 
 # Database URL for SQLAlchemy
 # dialect+driver://user:password@host/dbname[?key=value..]

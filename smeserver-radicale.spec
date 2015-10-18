@@ -1,6 +1,6 @@
 %define name smeserver-radicale
 %define version 0.0.3
-%define release 2
+%define release 3
 
 Summary: smserver rpm to setup radicale, a carddav and caldav client
 Name: %{name}
@@ -22,6 +22,9 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sun Oct 18 2015 stephane de labrusse <stephdl@de-labrusse.fr> 0.0.3-3
+- change path and permissions to collections
+
 * Sat Oct 17 2015 stephane de labrusse <stephdl@de-labrusse.fr> 0.0.3-2
 - /etc/rc.d/init.d/masq & /etc/services are expanding on radicale-update
 
@@ -40,7 +43,7 @@ smserver rpm to setup the roundcube IMAP mail client.
 
 %build
 perl createlinks
-%{__mkdir_p} root/home/e-smith/files/.radicale/collections
+%{__mkdir_p} root/home/e-smith/files/radicale/collections
 %{__mkdir_p} root/etc/radicale/
 %{__mkdir_p} root/var/log/radicale
 %{__mkdir_p} root/var/run/radicale
@@ -51,7 +54,8 @@ rm -rf $RPM_BUILD_ROOT
 rm -f %{name}-%{version}-filelist
 /sbin/e-smith/genfilelist \
    --dir /etc/radicale/ 'attr(0755,root,root)' \
-   --dir /home/e-smith/files/.radicale/collections 'attr(0755,radicale,radicale)' \
+   --dir /home/e-smith/files/radicale 'attr(0750,radicale,radicale)' \
+   --dir /home/e-smith/files/radicale/collections 'attr(0750,radicale,radicale)' \
    --dir /var/log/radicale 'attr(0755,radicale,radicale)' \
    --file /var/log/radicale/radicale.log 'attr(0755,radicale,radicale)' \
    --dir /var/run/radicale 'attr(0755,radicale,radicale)' \
