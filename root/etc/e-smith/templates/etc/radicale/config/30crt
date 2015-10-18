@@ -5,4 +5,4 @@ ssl = True
 # SSL certificate path
 #certificate = /etc/apache2/ssl/server.crt
 
-certificate = /home/e-smith/files/.radicale/radicale.crt
+certificate = /home/e-smith/files/radicale/radicale.crt
